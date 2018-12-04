@@ -1,0 +1,17 @@
+body {
+    background: skyblue;
+}
+
+@font-face {
+    font-family: RnMfont;
+    src: url(./rick_and_morty_by_shittychan-d9h2vl6.ttf);
+}
+
+.startscreen {
+    display: none;
+    font-family: RnMfont;
+}
+
+.mainscreen {
+    font-family: RnMfont;
+}
