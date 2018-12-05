@@ -20,3 +20,11 @@ body {
     display: none;
     color: red;
 }
+
+#me6no1 {
+    display: inherit;
+}
+
+#me6no2, #me6no3, #me6unsure, #me6wannadie, #me6chaos, #me6angry {
+    display: none;
+}

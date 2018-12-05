@@ -48,19 +48,19 @@ let missedlettersdiv = document.getElementById("missedletters");
 
 let wordboxdiv = document.getElementById("wordbox");
 
-let me6picdiv = document.getElementById("me6picdiv");
+let me6no1 = document.getElementById("me6no1");
 
-let me6no1 = document.createElement("img");
+let me6no2 = document.getElementById("me6no2");
 
-let me6no2 = document.createElement("img");
+let me6no3 = document.getElementById("me6no3");
 
-let me6unsure = document.createElement("img");
+let me6unsure = document.getElementById("me6unsure");
 
-let me6wannadie = document.createElement("img");
+let me6wannadie = document.getElementById("me6wannadie");
 
-let me6chaos = document.createElement("img");
+let me6chaos = document.getElementById("me6chaos");
 
-let me6angry = document.createElement("img");
+let me6angry = document.getElementById("me6angry");
 
 //function to reset game for every new word
 function setgame() {
@@ -80,6 +80,14 @@ function setgame() {
     guesscount = 7;
     //reset missed letters
     missedlettersarray = [];
+    //reset pictures
+    me6no1.style.display = "inherit";
+    me6no2.style.display = "none";
+    me6no3.style.display = "none";
+    me6unsure.style.display = "none";
+    me6wannadie.style.display = "none";
+    me6chaos.style.display = "none";
+    me6angry.style.display = "none";
 
     currentstat();
 };
@@ -151,8 +159,29 @@ document.onkeyup = function (event) {
             };
             //change picture at bot depending on guesscount status
             if (guesscount === 6) {
-
-            }
+                me6no2.style.display = "inherit";
+            };
+            if (guesscount === 5) {
+                me6no3.style.display = "inherit";
+            };
+            if (guesscount === 4) {
+                me6unsure.style.display = "inherit";
+                me6no1.style.display = "none";
+                me6no2.style.display = "none";
+                me6no3.style.display = "none";
+            };
+            if (guesscount === 3) {
+                me6wannadie.style.display = "inherit";
+                me6unsure.style.display = "none";
+            };
+            if (guesscount === 2) {
+                me6chaos.style.display = "inherit";
+                me6wannadie.style.display = "none";
+            };
+            if (guesscount === 1) {
+                me6angry.style.display = "inherit";
+                me6chaos.style.display = "none";
+            };
         };
         //update the divs with the results.
         currentstat();        
