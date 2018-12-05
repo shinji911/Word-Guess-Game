@@ -1,5 +1,6 @@
 body {
     background: skyblue;
+    font-family: RnMfont;
 }
 
 @font-face {
@@ -7,11 +8,10 @@ body {
     src: url(./rick_and_morty_by_shittychan-d9h2vl6.ttf);
 }
 
-.startscreen {
-    display: none;
-    font-family: RnMfont;
+#startscreen {
+    display: inherit;
 }
 
-.mainscreen {
-    font-family: RnMfont;
+#mainscreen {
+    display: none;
 }

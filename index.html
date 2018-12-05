@@ -17,27 +17,66 @@
 </head>
 
 <body>
-    <div class="container startscreen">
-        <div class="row justify-content-center">
-            <div class="card">
-                <img class="card-img-top" src="./assets/images/me6box.jpg" alt="Mr. Meeseeks Box" id="startbtn">
-                <div class="card-body justify-content-center d-flex">
-                    <h2 class="card-title m-0">Press the Button to Start!</h2>
+    <div class="container">
+        <div id="startscreen">
+            <div class="row justify-content-center">
+                <div class="card">
+                    <img class="card-img-top" src="./assets/images/me6box.jpg" alt="Mr. Meeseeks Box" id="startbtn">
+                    <div class="card-body justify-content-center d-flex">
+                        <h2 class="card-title m-0">Press Any Key to Start!</h2>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container mainscreen">
-        <div class="row justify-content-center">
-            <div class="col-2">
-                <img class="img-fluid rounded" src="" id="topleftimg">
+    <div class="container">
+        <div id="mainscreen">
+            <div class="container my-5">
+                <div class="row">
+                    <div class="col-4 text-right">
+                        <h2>Number of Wins in a Row:</h2>
+                    </div>
+                    <div class="col">
+                        <h2 id="wincount">0</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 text-right">
+                        <h2>Guesses Remaining:</h2>
+                    </div>
+                    <div class="col">
+                        <h2 id="guesscount">8</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 text-right">
+                        <h2>Missed Letters:</h2>
+                    </div>
+                    <div class="col">
+                        <h2 id="missedletters"></h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 text-right">
+                        <h2>Word in Question:</h2>
+                    </div>
+                    <div class="col">
+                        <h2 id="wordbox">" _ _ _ _ _ "</h2>
+                    </div>
+                </div>
             </div>
-            <div class="col-2" id="topcenterdiv">
-                <img class="img-fluid rounded" src="assets/images/me6hpy.jpg" id="topcenterimg">
-            </div>
-            <div class="col-2">
-                <img class="img-fluid rounded" src="" id="topleftimg">
+
+            <div class="row justify-content-center mt-5">
+                <div class="col-2">
+                    <img class="img-fluid rounded" src="" id="botleftimg" alt="">
+                </div>
+                <div class="col-2" id="botcenterdiv">
+                    <img class="img-fluid rounded" src="assets/images/me6hpy.jpg" id="botcenterimg" alt="">
+                </div>
+                <div class="col-2">
+                    <img class="img-fluid rounded" src="" id="botleftimg" alt="">
+                </div>
             </div>
         </div>
     </div>
