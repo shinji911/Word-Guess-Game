@@ -8,6 +8,11 @@ let gamestart = false;
 let guesswordarray = [];
 let guesswordi = 0;
 let guessword = "";
+let wincount = 0;
+let guesscount = 0;
+let matchletter = false;
+let missedlettersarray = [];
+let missedletters = "";
 
 
 //store words to be chosen here.
@@ -18,61 +23,139 @@ wordbank = [
     "jerry",
     "beth",
     "snowball",
-    "hide",
+    "terry",
     "summer"
 ];
 
 //store elements in variables.
+let bod = document.getElementById("bod");
+
 let startscreen = document.getElementById("startscreen");
 
 let mainscreen = document.getElementById("mainscreen");
 
 let startbtn = document.getElementById("startbtn");
 
-let wincount = document.getElementById("wincount");
+let gameoverdiv = document.getElementById("gameover");
 
-let guesscount = document.getElementById("guesscount");
+let youdiedbtn = document.getElementById("youdied");
 
-let missedletters = document.getElementById("missedletters");
+let wincountdiv = document.getElementById("wincount");
 
-let wordbox = document.getElementById("wordbox");
+let guesscountdiv = document.getElementById("guesscount");
+
+let missedlettersdiv = document.getElementById("missedletters");
+
+let wordboxdiv = document.getElementById("wordbox");
 
 let me6picdiv = document.getElementById("me6picdiv");
 
-let me6pic = document.getElementById("me6pic");
+let me6no1 = document.createElement("img");
 
+let me6no2 = document.createElement("img");
 
+let me6unsure = document.createElement("img");
+
+let me6wannadie = document.createElement("img");
+
+let me6chaos = document.createElement("img");
+
+let me6angry = document.createElement("img");
+
+//function to reset game for every new word
 function setgame() {
+    gamewordarray = [];
+    guesswordarray = [];
     //randomly choose a word from the bank
     gameword = wordbank[Math.floor(Math.random() * wordbank.length)];
     //make an array with each letter of the chosen word
     for (gamewordi = 0; gamewordi < gameword.length; gamewordi++) {
-        gamewordarray[gamewordi] = gameword.charAt(gamewordi); 
+        gamewordarray[gamewordi] = gameword.charAt(gamewordi);
     };
     //display blanks for every letter in the chosen word
-    guessword = '"';
     for (guesswordi = 0; guesswordi < gameword.length; guesswordi++) {
         guesswordarray[guesswordi] = "_";
-        guessword = guessword + " _ ";
     };
-    guessword = guessword + '"';
-    wordbox.innerHTML = guessword;
+    //reset guess count left
+    guesscount = 7;
+    //reset missed letters
+    missedlettersarray = [];
+
+    currentstat();
 };
 
-//clicking start button sets up the game for first round.
-startbtn.onclick = function() {
+//function to display current status of the game
+function currentstat() {
+    wincountdiv.innerHTML = wincount;
+    wordboxdiv.innerHTML = guessword;
+    guesscountdiv.innerHTML = guesscount;
+    missedletters = missedlettersarray.join(" ");
+    missedlettersdiv.innerHTML = missedletters;
+    guessword = '" ' + guesswordarray.join(" ") + ' "';
+    wordboxdiv.innerHTML = guessword;
+};
+
+//function for when game is over;
+function rungameover() {
+    gamestart = false;
+    mainscreen.style.display = "none";
+    gameoverdiv.style.display = "inherit";
+    bod.style.background = "black";
+}
+
+//function to get to main screen and start game
+function startgame() {
+    bod.style.background = "skyblue";
     mainscreen.style.display = "inherit";
     startscreen.style.display = "none";
+    gameoverdiv.style.display = "none";
     gamestart = true;
+    wincount = 0;
     setgame();
 };
 
+//clicking start button sets up the game.
+startbtn.onclick = function () {
+    startgame();
+};
+
+//clicking youdied button resets the game.
+youdiedbtn.onclick = function () {
+    startgame();
+}
+
 //keypress to run the game loops after game start
-document.onkeyup = function(event) {
+document.onkeyup = function (event) {
+    matchletter = false;
     guesskey = event.key;
     guesskey = guesskey.toLowerCase();
     if (typeof guesskey === "string" && gamestart === true) {
-        
+        //compare guessed letter with every letter in gameword and fill in respective blank if match
+        for (guesswordi = 0; guesswordi < gamewordarray.length; guesswordi++) {
+            if (guesskey === gamewordarray[guesswordi]) {
+                guesswordarray[guesswordi] = guesskey;
+                matchletter = true;
+                //if guessword matchs gameword, add 1 to wincount and reset game
+                if (guesswordarray.toString() === gamewordarray.toString()) {
+                    wincount = wincount + 1;
+                    setgame();
+                };
+            };
+        };
+        //if guesskey was not a match, subtract 1 from guesscount and add the guesskey to the missedletters array. if guesscount is 0, game over
+        if (matchletter === false) {
+            guesscount = guesscount - 1;
+            missedlettersarray.push(guesskey);
+            if (guesscount === 0) {
+                rungameover();
+            };
+            //change picture at bot depending on guesscount status
+            if (guesscount === 6) {
+
+            }
+        };
+        //update the divs with the results.
+        currentstat();        
     };
 };
 

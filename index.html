@@ -16,14 +16,14 @@
     <title>Word Guess Game</title>
 </head>
 
-<body>
+<body id="bod">
     <div class="container">
         <div id="startscreen">
             <div class="row justify-content-center">
                 <div class="card">
                     <img class="card-img-top" src="./assets/images/me6box.jpg" alt="Mr. Meeseeks Box" id="startbtn">
                     <div class="card-body justify-content-center d-flex">
-                        <h2 class="card-title m-0">Press the Button to Start!</h2>
+                        <h1 class="card-title m-0">Press the Button to Start!</h1>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                         <h2>Guesses Remaining:</h2>
                     </div>
                     <div class="col">
-                        <h2 id="guesscount">8</h2>
+                        <h2 id="guesscount">0</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -68,8 +68,21 @@
             </div>
 
             <div class="row justify-content-center mt-5" id="me6picdiv">
-                <img class="img-fluid rounded" src="assets/images/me6hpy.jpg" id="me6pic" alt="">                                
+                <img class="img-fluid rounded" src="assets/images/me6hpy.jpg" alt="">                                
             </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="gameover">
+            <div class="row mt-5">
+                <div class="col d-flex justify-content-center">
+                    <img class="img" src="assets/images/gameover.jpg" alt="GAME OVER">
+                </div>                               
+            </div>
+            <div class="row justify-content-center">
+                <h1 id="youdied">Click Here to Restart</h1>       
+            </div>            
         </div>
     </div>
 

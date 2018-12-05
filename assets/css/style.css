@@ -15,3 +15,8 @@ body {
 #mainscreen {
     display: none;
 }
+
+#gameover {
+    display: none;
+    color: red;
+}
