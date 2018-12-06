@@ -62,12 +62,17 @@ let me6chaos = document.getElementById("me6chaos");
 
 let me6angry = document.getElementById("me6angry");
 
+//function to randomly choose from an array
+function randchoose(iptarray) {
+    return iptarray[Math.floor(Math.random() * iptarray.length)];
+};
+
 //function to reset game for every new word
 function setgame() {
     gamewordarray = [];
     guesswordarray = [];
     //randomly choose a word from the bank
-    gameword = wordbank[Math.floor(Math.random() * wordbank.length)];
+    gameword = randchoose(wordbank);
     //make an array with each letter of the chosen word
     for (gamewordi = 0; gamewordi < gameword.length; gamewordi++) {
         gamewordarray[gamewordi] = gameword.charAt(gamewordi);
@@ -120,6 +125,7 @@ function startgame() {
     gamestart = true;
     wincount = 0;
     setgame();
+    randchoose(startsound).play();
 };
 
 //clicking start button sets up the game.
@@ -146,6 +152,7 @@ document.onkeyup = function (event) {
                 //if guessword matchs gameword, add 1 to wincount and reset game
                 if (guesswordarray.toString() === gamewordarray.toString()) {
                     wincount = wincount + 1;
+                    randchoose(winsound).play();
                     setgame();
                 };
             };
@@ -169,10 +176,12 @@ document.onkeyup = function (event) {
                 me6no1.style.display = "none";
                 me6no2.style.display = "none";
                 me6no3.style.display = "none";
+                randchoose(losingsound).play();
             };
             if (guesscount === 3) {
                 me6wannadie.style.display = "inherit";
                 me6unsure.style.display = "none";
+                cantTake.play()
             };
             if (guesscount === 2) {
                 me6chaos.style.display = "inherit";
@@ -187,4 +196,44 @@ document.onkeyup = function (event) {
         currentstat();        
     };
 };
+
+//object constructor to handle sound objects
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+        this.sound.play();
+    }
+    this.stop = function(){
+        this.sound.pause();
+    }
+}
+
+//create and store sound objects in variables
+let ohhYeah = new sound("./assets/sound/ohhYeah.mp3");
+
+let ohhNice = new sound("./assets/sound/ohhNice.mp3");
+
+let cantTake = new sound("./assets/sound/cantTake.mp3");
+
+let iSuck = new sound("./assets/sound/iSuck.mp3");
+
+let stickler = new sound("./assets/sound/stickler.mp3");
+
+let lookAtMe = new sound("./assets/sound/lookAtMe.mp3");
+
+let thatsOk = new sound("./assets/sound/thatsOk.mp3");
+
+let yesSir = new sound("./assets/sound/yesSir.mp3");
+
+//store some of the sound variables in array for random generation
+let startsound = [lookAtMe, yesSir];
+
+let winsound = [ohhNice, ohhYeah, stickler];
+
+let losingsound = [iSuck, thatsOk];
 

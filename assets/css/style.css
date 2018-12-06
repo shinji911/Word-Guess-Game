@@ -16,6 +16,10 @@ body {
     display: none;
 }
 
+.setht {
+    height: 400px;
+}
+
 #gameover {
     display: none;
     color: red;
