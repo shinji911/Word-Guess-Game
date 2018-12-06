@@ -19,12 +19,18 @@ let missedletters = "";
 wordbank = [
     "rick",
     "morty",
-    "birdman",
+    "birdperson",
     "jerry",
     "beth",
     "snowball",
     "terry",
-    "summer"
+    "summer",
+    "poopybutthole",
+    "slowmobius",
+    "unity",
+    "squanchy",
+    "gearhead",
+    "jellybean"
 ];
 
 //store elements in variables.
