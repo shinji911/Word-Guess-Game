@@ -149,7 +149,7 @@ document.onkeyup = function (event) {
     matchletter = false;
     guesskey = event.key;
     guesskey = guesskey.toLowerCase();
-    if (typeof guesskey === "string" && gamestart === true) {
+    if (guesskey.charCodeAt(0) < 123 && guesskey.charCodeAt(0) > 96 && gamestart === true) {
         //compare guessed letter with every letter in gameword and fill in respective blank if match
         for (guesswordi = 0; guesswordi < gamewordarray.length; guesswordi++) {
             if (guesskey === gamewordarray[guesswordi]) {
